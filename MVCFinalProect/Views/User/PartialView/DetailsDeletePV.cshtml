@@ -1,0 +1,31 @@
+﻿@*same comments as Department*@
+@model UsersViewModel;  
+@*to show photo*@
+
+<div>
+    <label asp-for="FName" class="col-form-label"></label>
+    <input type="text" asp-for="FName" class="form-control" readonly />
+</div>
+<div>
+    <label asp-for="LName" class="col-form-label"></label>
+    <input type="text" asp-for="LName" class="form-control" readonly />
+</div>
+<div>
+    <label asp-for="PhoneNumber" class="col-form-label"></label>
+    <input type="text" asp-for="PhoneNumber" class="form-control" readonly />
+</div>
+<div>
+    <label asp-for="Email" class="col-form-label"></label>
+    <input type="email" asp-for="Email" class="form-control" readonly />
+</div>
+@if (Model.Roles.Count!=0)
+{
+    <div>
+        <label asp-for="Roles" class="col-form-label"></label>
+        <input type="text" asp-for="Roles" class="form-control" value="@string.Join(' ', Model.Roles)" readonly />
+    </div>
+}
+
+
+
+

@@ -1,0 +1,27 @@
+﻿
+@*same comments as Department*@
+@model UsersViewModel;  
+
+
+<div>
+    <label asp-for="FName" class="col-form-label"></label>
+    <input type="text" asp-for="FName" class="form-control" />
+    <span asp-validation-for="FName" class="text-danger"></span>
+</div>
+<div>
+    <label asp-for="LName" class="col-form-label"></label>
+    <input type="text" asp-for="LName" class="form-control" />
+    <span asp-validation-for="LName" class="text-danger"></span>
+</div>
+<div>
+    <label asp-for="PhoneNumber" class="col-form-label"></label>
+    <input type="text" asp-for="PhoneNumber" class="form-control" />
+    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+</div>
+<div>
+    <label asp-for="Email" class="col-form-label"></label>
+    <input type="email" asp-for="Email" class="form-control" />
+</div>
+
+
+

@@ -1,0 +1,21 @@
+﻿@model DepartmentViewModel  //type of Model (the value of parameter that View method take if exist )
+<div>
+    @*asp-for instead of for (that link with id)
+    <lable for ="Code" ...></lable>
+    *@
+    <label asp-for="Code" class="col-form-label"></label>
+    @*asp-for instead of name(that take the name of property in Model to store in it) and id(that link with (for) in lable)
+    <input type ="text" name ="Code" id="Code" ... />
+    *@
+    <input type="text" asp-for="Code" class="form-control" readonly />@*readonly to prevent user to edit*@
+</div>
+
+<div>
+    <label asp-for="Name" class="col-form-label"></label>
+    <input type="text" asp-for="Name" class="form-control" readonly />@*readonly to prevent user to edit*@
+</div>
+
+<div>
+    <label asp-for="DateOfCreation" class="col-form-label"></label>
+    <input type="datetime-local" asp-for="DateOfCreation" class="form-control" readonly />@*readonly to prevent user to edit*@
+</div>

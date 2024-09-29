@@ -1,0 +1,26 @@
+﻿@model DepartmentViewModel; //type of Model (the value of parameter that View method take if exist)
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create new Department</h1>
+<br />
+<br />
+
+@*form go to post action so will go to create action that [HttpPost] (if i didn't define the method then the default is method="post" )
+  form by default make asp-route-department="@Model" (the value of create action's parameter if has parameter same type as @Model)
+*@
+@*I can don't write the asp-controller="" if the action in same controller *@
+<form asp-action="Create" method="post">
+    <partial name="PartialView/CreateEditPV" />
+    @*submit that make clr go to the action that I put in form tag (Create)  *@
+    <input type="submit" value="Create" class="btn btn-primary mt-5" />
+    @*<a></a> is always go to Get Action*@
+    @*I can don't write the asp-controller="" if the action in same controller *@
+    <a asp-action="Index" class="btn btn-Light mt-5">Back to home</a>
+</form>
+@section client_side_validation
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+

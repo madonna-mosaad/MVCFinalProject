@@ -1,0 +1,39 @@
+﻿@model SignUpViewModel;
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div class="agileits-top">
+	<form asp-action="SignUp" method="post">
+		<input class="text" type="text" asp-for="FName" placeholder="FirstName" required="">
+		<span asp-validation-for="FName" class="alert-danger"></span>
+
+		<input class="text" type="text" asp-for="LName" placeholder="LaststName" required="">
+		<span asp-validation-for="LName" class="alert-danger"></span>
+
+		<input autocomplete="on" class="text email" type="email" asp-for="Email" placeholder="Email" required="">
+		<span asp-validation-for="Email" class="alert-danger"></span>
+
+		<input class="text" type="text" asp-for="PhoneNumber" placeholder="LaststName" required="">
+		<span asp-validation-for="PhoneNumber" class="alert-danger"></span>
+
+
+		<input class="text" type="password" asp-for="Password" placeholder="Password" required="">
+		<span asp-validation-for="Password" class="alert-danger"></span>
+
+		<input class="text w3lpass" type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" required="">
+		<span asp-validation-for="ConfirmPassword" class="alert-danger"></span>
+
+		<div class="wthree-text">
+			<label class="anim">
+				<input asp-for="IsAgree" required="">
+				<span asp-validation-for="IsAgree" class="alert-danger">I Agree To The Terms & Conditions</span>
+			</label>
+			<div class="clear"> </div>
+		</div>
+		<input type="submit" value="SIGNUP">
+	</form>
+	<p>Do you have an Account? <a asp-action="SignIn"> Login Now!</a></p>
+</div>
+

@@ -1,0 +1,69 @@
+﻿@*same comments as Department*@
+@model EmployeeViewModel;  
+
+@*in GenericRepository before use UnitOfWork*@
+@*lw kont 3mlt el dependency injection f elcontroller yb2a kont hb3t el _depRepo.GetAll() mn elaction 3n tre2 el ViewData*@
+@*@inject IDepartmentRepository _depRepo;
+  @{
+    var departments = new SelectList(_depRepo.GetAll(),nameof(Department.Id),nameof(Department.Name));
+   }
+*@
+
+@*after use UnitOfWork*@
+@{
+    var departments = new SelectList(ViewData["Departments"] as IEnumerable<Department>, nameof(Department.Id), nameof(Department.Name));
+}
+
+<div>
+    <label asp-for="Name" class="col-form-label"></label>
+    <input type="text" asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div>
+    <label asp-for="Age" class="col-form-label"></label>
+    <input type="text" asp-for="Age" class="form-control" />
+    <span asp-validation-for="Age" class="text-danger"></span>
+</div>
+<div>
+    <label asp-for="Address" class="col-form-label"></label>
+    <input type="text" asp-for="Address" class="form-control" />
+    <span asp-validation-for="Address" class="text-danger"></span>
+</div>
+<div>
+    <label asp-for="Email" class="col-form-label"></label>
+    <input type="email" asp-for="Email" class="form-control" />
+</div>
+<div>
+    <label asp-for="Gender" class="col-form-label"></label>
+    <input type="text" asp-for="Gender" class="form-control" />
+</div>
+<div>
+    <label asp-for="Salary" class="col-form-label"></label>
+    <input type="text" asp-for="Salary" class="form-control" />
+</div>
+<div>
+    <label asp-for="PhoneNumber" class="col-form-label"></label>
+    <input type="tel" asp-for="PhoneNumber" class="form-control" />
+</div>
+<div>
+    <label asp-for="IsActive" class="col-form-label"></label>
+    @*the bool type doesnot need type*@
+    <input asp-for="IsActive" class="form-control" />
+</div>
+<div>
+    <label asp-for="Department" class="col-form-label"></label>
+    @*asp-items 
+        -take SelectList Datatype
+        -is foreach(d in departments)
+            {<option value="the second parameter of @departments (d.Id) ">The third parameter of @departments (d.Name)</option>}
+            (the value that will send to DB if user select it) (text that will appear to user)
+    *@
+    <select asp-items="@departments" asp-for="DepartmentId" >@* name="DepartmentId" is the property that will store the value that user will select in DB (in FK)*@
+        <option value="null" class="form-control">--Select Department--</option>
+    </select>
+</div>
+@*to chose the image from computer*@
+<div>
+    <label asp-for="Image" class="col-form-label"></label>
+    <input type="file" asp-for="Image" class="form-control-file" />
+</div>

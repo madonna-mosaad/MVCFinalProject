@@ -1,0 +1,71 @@
+﻿@*same comments as Department*@
+@model IEnumerable<EmployeeViewModel>;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Employees</h1>
+<br />
+<br />
+
+<a asp-action="Create" class="btn btn-primary">Create new Employee</a>
+<div class="align-content-center mt-3 ">
+    <form asp-action="Index" method="get" >
+        <input type="text" name="Name" placeholder="search by name"/>
+        <input type="submit" value="Search" class="btn btn-success" />
+    </form>
+</div>
+@if (TempData["Message"]!=null)
+{
+    <div class="alert alert-primary mt-3">
+      <h6>@TempData["Message"]</h6>
+    </div>
+}
+
+@if (Model?.Count() > 0)
+{
+    <table class="table table-hover table-striped mt-5 ">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(Employee=>Employee.Name)</th>
+                <th>@Html.DisplayNameFor(Employee => Employee.Gender)</th>
+                <th>@Html.DisplayNameFor(Employee => Employee.Age)</th>
+                <th>@Html.DisplayNameFor(Employee => Employee.Address)</th>
+                <th>@Html.DisplayNameFor(Employee => Employee.Salary)</th>
+                <th>@Html.DisplayNameFor(Employee=>Employee.Department)</th>
+                <th>@Html.DisplayNameFor(Employee => Employee.Email)</th>
+                <th>@Html.DisplayNameFor(Employee => Employee.PhoneNumber)</th>
+                <th>@Html.DisplayNameFor(Employee => Employee.HireDate)</th>
+                <th>@Html.DisplayNameFor(Employee => Employee.IsActive)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var employee in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(e => employee.Name) </td>
+                    <td>@Html.DisplayFor(e =>employee.Gender)</td>
+                    <td>@Html.DisplayFor(e => employee.Age)</td>
+                    <td>@Html.DisplayFor(e => employee.Address)</td>
+                    <td>@Html.DisplayFor(e => employee.Salary)</td>
+                    @*to get data from department Table , i did Include in Genric Reposirory in GetAll*@
+                    <td>@Html.DisplayFor(e=>employee.Department.Name)</td>
+                    <td>@Html.DisplayFor(e => employee.Email)</td>
+                    <td>@Html.DisplayFor(e => employee.PhoneNumber)</td>
+                    <td>@Html.DisplayFor(e => employee.HireDate)</td>
+                    <td>@Html.DisplayFor(e => employee.IsActive)</td>
+                    <partial name="_ButtonsPV" model="@employee.Id.ToString()" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="mt-5 alert alert-danger">
+        <h3>There is no Employees</h3>
+    </div>
+}

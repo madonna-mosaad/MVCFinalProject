@@ -1,0 +1,65 @@
+﻿@*same comments as Department*@
+@model IEnumerable<UsersViewModel>;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>All Users</h1>
+<br />
+<br />
+
+<a asp-action="Create" class="btn btn-primary">Create new User</a>
+<div class="align-content-center mt-3 ">
+    <form asp-action="Index" method="get">
+        <input type="text" name="Email" id="Email" placeholder="search by Email" />
+        <input type="submit" value="Search" class="btn btn-success" />
+    </form>
+</div>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-primary mt-3">
+        <h6>@TempData["Message"]</h6>
+    </div>
+}
+
+@if (Model?.Count() > 0)
+{
+    <table class="table table-hover table-striped mt-5 ">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(User => User.Id)</th>
+                <th>@Html.DisplayNameFor(User => User.FName)</th>
+                <th>@Html.DisplayNameFor(User => User.LName)</th>
+                <th>@Html.DisplayNameFor(User => User.PhoneNumber)</th>
+                <th>@Html.DisplayNameFor(User => User.Email)</th>
+                <th>@Html.DisplayNameFor(User => User.Roles)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var User in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(e => User.Id) </td>
+                    <td>@Html.DisplayFor(e => User.FName)</td>
+                    <td>@Html.DisplayFor(e => User.LName)</td>
+                    <td>@Html.DisplayFor(e => User.PhoneNumber)</td>
+                    <td>@Html.DisplayFor(e => User.Email)</td>
+                    <td>@string.Join(' ', User.Roles)</td>
+                    <partial name="_ButtonsPV" model="@User.Id" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="mt-5 alert alert-danger">
+        <h3>There is no Users</h3>
+    </div>
+}
+
+

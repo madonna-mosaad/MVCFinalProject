@@ -1,0 +1,25 @@
+﻿@model DepartmentViewModel ;//type of Model (the value of parameter that View method take if exist)
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Department Delete</h1>
+
+<br />
+<br />
+
+@*form go to post action so will go to delete action that [HttpPost](if i didn't define the method then the default is method="post" )
+  form by default make asp-route-department="@Model" (the value of Delete action's parameter if has parameter same type as @Model)
+*@
+<form asp-action="Delete" method="post">
+
+    @* (asp-for) اللي المستخدم هيدخله هيتخزن في الموديل في البروبيرتي اللي اسمها في *@
+    <partial name="PartialView/DetailsDeletePV" />
+    @*submit that make clr go to the action that I put in form tag (delete)  *@
+    <input type="submit" value="Delete" class="btn btn-primary mt-5" />
+    @*<a></a> is always go to Get Action*@
+    @*I can don't write the asp-controller="" if the action in same controller *@
+    <a asp-action="Index" class="btn btn-Light mt-5">Back to home</a>
+</form>
+
+

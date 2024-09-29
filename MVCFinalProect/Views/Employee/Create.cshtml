@@ -1,0 +1,20 @@
+﻿@*same comments as Department*@
+@model EmployeeViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Employee</h1>
+<br />
+<br />
+@*enctype if the user will upload file (the form has input from type file )*@
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+    <partial name="PartialView/CreateEditPV" />
+    <input type="submit" value="Create" class="btn btn-primary mt-5" />
+    <a asp-action="Index" class="btn btn-Light mt-5">Back to home</a>
+</form>
+@section client_side_validation
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+

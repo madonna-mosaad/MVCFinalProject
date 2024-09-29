@@ -1,0 +1,55 @@
+﻿@model IEnumerable<DepartmentViewModel>;//type of @Model(value of parameter that View method take if exist)
+
+<h1>Departments Data</h1>
+<br />
+<br />
+@*by default go to action that its method get [HttpGet]*@
+@*I can don't write the asp-controller="" if the action in same controller *@
+<a asp-action="Create" class="btn btn-primary">Create new Department</a>
+<div class="align-content-center mt-3 ">
+    <form asp-action="Index" method="get">
+        @*the name is has the name of parameter*@
+        <input type="text" name="Name" placeholder="search by name" />
+        <input type="submit" value="Search" class="btn btn-success" />
+    </form>
+</div>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-primary mt-3">
+        <h6>@TempData["Message"]</h6>
+    </div>
+}
+@if (Model?.Count() > 0)//Model is the parameter of View Function in Index action in DepartmentController(IEnumrable<Department>)
+{
+    <table class="table table-hover table-striped mt-5">
+        <thead>
+            <tr>
+                @*@Html.DisplayNameFor to Write right name of properties in website *@
+                <th>@Html.DisplayNameFor(D => D.Code)</th>
+                <th>@Html.DisplayNameFor(D => D.Name)</th>
+                <th>@Html.DisplayNameFor(D => D.DateOfCreation)</th>
+                <th>Details</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*DisplayFor() => to implement all frontend data annotation*@
+                    <td>@Html.DisplayFor(e => item.Code)</td>
+                    <td>@Html.DisplayFor(e => item.Name)</td>
+                    <td>@Html.DisplayFor(e => item.DateOfCreation)</td>
+                    <partial name="_ButtonsPV" model="@item.Id.ToString()" />
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="mt-5 alert alert-danger">
+        <h3>There is no Departments</h3>
+    </div>
+}

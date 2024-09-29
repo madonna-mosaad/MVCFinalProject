@@ -1,0 +1,23 @@
+﻿@*same comments as Department*@
+@model EmployeeViewModel ;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Employee</h1>
+<br />
+<br />
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+    <partial name="PartialView/CreateEditPV" />
+    <input asp-for="Id" type="hidden" value="@Model.Id" />
+    @*to send the old ImageName to name  *@
+    <input type="hidden" asp-for="ImageName"/>
+    <input type="submit" value="Edit" class="btn btn-primary mt-5" />
+    <a asp-action="Index" class="btn btn-Light mt-5">Back to home</a>
+</form>
+@section client_side_validation
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+

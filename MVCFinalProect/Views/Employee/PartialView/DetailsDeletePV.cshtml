@@ -1,0 +1,43 @@
+﻿@*same comments as Department*@
+@model EmployeeViewModel;  
+@*to show photo*@
+<div>
+    @*take the photo from Images folder(in my code) that user uploded in to show it *@
+    <img src="Files/Images" class="figure-img" />
+</div>
+<div>
+    <label asp-for="Name" class="col-form-label"></label>
+    <input type="text" asp-for="Name" class="form-control" readonly />
+</div>
+<div>
+    <label asp-for="Age" class="col-form-label"></label>
+    <input type="text" asp-for="Age" class="form-control" readonly />
+</div>
+<div>
+    <label asp-for="Address" class="col-form-label"></label>
+    <input type="text" asp-for="Address" class="form-control" readonly />
+</div>
+<div>
+    <label asp-for="Email" class="col-form-label"></label>
+    <input type="email" asp-for="Email" class="form-control" readonly />
+</div>
+<div>
+    <label asp-for="Gender" class="col-form-label"></label>
+    <input type="text" asp-for="Gender" class="form-control" readonly />
+</div>
+<div>
+    <label asp-for="Salary" class="col-form-label"></label>
+    <input type="text" asp-for="Salary" class="form-control" readonly />
+</div>
+<div>
+    <label asp-for="PhoneNumber" class="col-form-label"></label>
+    <input type="tel" asp-for="PhoneNumber" class="form-control" readonly />
+</div>
+<div>
+    <label asp-for="IsActive" class="col-form-label"></label>
+    @*the bool type doesnot need type*@
+    <input asp-for="IsActive" class="form-control" readonly />
+</div>
+
+
+

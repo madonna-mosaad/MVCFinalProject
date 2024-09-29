@@ -1,0 +1,16 @@
+﻿@*same comments as Department*@
+@model UsersViewModel ;
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>User Details</h1>
+<br />
+<br />
+
+<div>
+    <partial name="PartialView/DetailsDeletePV" />
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary mt-5">Edit</a>
+    <a asp-action="Index" class="btn btn-Light mt-5">Back to home</a>
+</div>
+
