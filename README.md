@@ -38,5 +38,3 @@ This repository outlines the implementation of an MVC application with the follo
    - **Employee Page**: Shows a list of employees with management options.
    - **Department Page**: Lists departments and allows for modifications.
    - **Role Page**: Displays roles within the application with options for editing and deletion.
-
-By implementing these features, this MVC project aims to provide a user-friendly interface for managing user accounts and related data efficiently.
